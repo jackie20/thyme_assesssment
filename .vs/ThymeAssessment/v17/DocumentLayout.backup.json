@@ -1,0 +1,87 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\mukundir\\source\\repos\\thyme_assesssment\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2E74CB28-18C8-42EB-85B7-7AE8FABEEFEF}|ThymeFrontEnd\\ThymeFrontEnd.csproj|c:\\users\\mukundir\\source\\repos\\thyme_assesssment\\thymefrontend\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E74CB28-18C8-42EB-85B7-7AE8FABEEFEF}|ThymeFrontEnd\\ThymeFrontEnd.csproj|solutionrelative:thymefrontend\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4EA39427-B8BE-448D-9D6B-84B677E88EF1}|ThymeAssessment\\ThymeBackend.csproj|c:\\users\\mukundir\\source\\repos\\thyme_assesssment\\thymeassessment\\repository\\customerinvoicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4EA39427-B8BE-448D-9D6B-84B677E88EF1}|ThymeAssessment\\ThymeBackend.csproj|solutionrelative:thymeassessment\\repository\\customerinvoicerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E74CB28-18C8-42EB-85B7-7AE8FABEEFEF}|ThymeFrontEnd\\ThymeFrontEnd.csproj|c:\\users\\mukundir\\source\\repos\\thyme_assesssment\\thymefrontend\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{2E74CB28-18C8-42EB-85B7-7AE8FABEEFEF}|ThymeFrontEnd\\ThymeFrontEnd.csproj|solutionrelative:thymefrontend\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E74CB28-18C8-42EB-85B7-7AE8FABEEFEF}|ThymeFrontEnd\\ThymeFrontEnd.csproj|c:\\users\\mukundir\\source\\repos\\thyme_assesssment\\thymefrontend\\models\\invoicedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E74CB28-18C8-42EB-85B7-7AE8FABEEFEF}|ThymeFrontEnd\\ThymeFrontEnd.csproj|solutionrelative:thymefrontend\\models\\invoicedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CustomerInvoiceRepository.cs",
+              "DocumentMoniker": "C:\\Users\\mukundir\\source\\repos\\thyme_assesssment\\ThymeAssessment\\Repository\\CustomerInvoiceRepository.cs",
+              "RelativeDocumentMoniker": "ThymeAssessment\\Repository\\CustomerInvoiceRepository.cs",
+              "ToolTip": "C:\\Users\\mukundir\\source\\repos\\thyme_assesssment\\ThymeAssessment\\Repository\\CustomerInvoiceRepository.cs",
+              "RelativeToolTip": "ThymeAssessment\\Repository\\CustomerInvoiceRepository.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAmwF4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T21:46:24.043Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "InvoiceDTO.cs",
+              "DocumentMoniker": "C:\\Users\\mukundir\\source\\repos\\thyme_assesssment\\ThymeFrontEnd\\Models\\InvoiceDTO.cs",
+              "RelativeDocumentMoniker": "ThymeFrontEnd\\Models\\InvoiceDTO.cs",
+              "ToolTip": "C:\\Users\\mukundir\\source\\repos\\thyme_assesssment\\ThymeFrontEnd\\Models\\InvoiceDTO.cs",
+              "RelativeToolTip": "ThymeFrontEnd\\Models\\InvoiceDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T21:44:21.356Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\mukundir\\source\\repos\\thyme_assesssment\\ThymeFrontEnd\\Form1.cs",
+              "RelativeDocumentMoniker": "ThymeFrontEnd\\Form1.cs",
+              "ToolTip": "C:\\Users\\mukundir\\source\\repos\\thyme_assesssment\\ThymeFrontEnd\\Form1.cs",
+              "RelativeToolTip": "ThymeFrontEnd\\Form1.cs",
+              "ViewState": "AgIAADUCAAAAAAAAAAAAAFsCAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T21:42:21.992Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\mukundir\\source\\repos\\thyme_assesssment\\ThymeFrontEnd\\Form1.cs",
+              "RelativeDocumentMoniker": "ThymeFrontEnd\\Form1.cs",
+              "ToolTip": "C:\\Users\\mukundir\\source\\repos\\thyme_assesssment\\ThymeFrontEnd\\Form1.cs [Design]",
+              "RelativeToolTip": "ThymeFrontEnd\\Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-04T21:24:47.368Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

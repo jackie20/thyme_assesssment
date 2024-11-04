@@ -22,16 +22,16 @@ namespace ThymeFrontEnd
     public partial class Form1 : Form
     {
         private readonly HttpClient _httpClient;
-        private string logs_path = Application.StartupPath+ "logs.txt";
+        private string logs_path = Application.StartupPath + "logs.txt";
         private ListBox CustomersIdsLisbox = new ListBox();
-        private List<CustomerDisplay>  customerDisplaysList = new List<CustomerDisplay>();
+        private List<CustomerDisplay> customerDisplaysList = new List<CustomerDisplay>();
         private int editCustomerId = 0;
         public Form1()
         {
             InitializeComponent();
             _httpClient = new HttpClient
             {
-                BaseAddress = new Uri("https://localhost:7062/api/")  
+                BaseAddress = new Uri("https://localhost:7062/api/")
             };
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -56,12 +56,12 @@ namespace ThymeFrontEnd
                     // If the file exists, append new content
                     using (StreamWriter writer = File.AppendText(logs_path))
                     {
-                        writer.WriteLine($"\n {DateTime.Now.ToLongDateString()} :  "+contentToWrite);
+                        writer.WriteLine($"\n {DateTime.Now.ToLongDateString()} :  " + contentToWrite);
                     }
                 }
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
 
@@ -72,6 +72,7 @@ namespace ThymeFrontEnd
         {
             addlogs("loadCustomers");
             CustomersIdsLisbox.Items.Clear();
+            txt_add_invoice_CustomerCombo.Items.Clear();
             customerDisplaysList.Clear();
             try
             {
@@ -99,15 +100,15 @@ namespace ThymeFrontEnd
                                 customer.CustomerDescription,
                                 customer.EmailAddress,
                                 customer.PartnerContact,
-                                customer.PartnerCustomerCode, 
+                                customer.PartnerCustomerCode,
                                 customer.CountInvoices,
                                 " ",
-                                "Edit Customer" ,
+                                "Edit Customer",
                                 "Delete Customer",
-                                "View Invoices" 
+                                "View Invoices"
                             );
                             CustomersIdsLisbox.Items.Add(customer.CustomerID.ToString());
-
+                            txt_add_invoice_CustomerCombo.Items.Add(customer.CustomerDescription);
                             customerDisplaysList.Add(customer);
                         }
                     }
@@ -132,8 +133,8 @@ namespace ThymeFrontEnd
 
         }
 
-            // Helper function to check if a string is valid JSON
-            private bool IsJson(string input)
+        // Helper function to check if a string is valid JSON
+        private bool IsJson(string input)
         {
             input = input.Trim();
             return (input.StartsWith("{") && input.EndsWith("}")) || // For JSON objects
@@ -152,8 +153,15 @@ namespace ThymeFrontEnd
             EditCustomerPanel.Hide();
             EditCustomerPanel.Dock = DockStyle.Fill;
 
-        
 
+            add_invoice_panel.Hide();
+            add_invoice_panel.Dock = DockStyle.Fill;
+
+            view_invoices_panel.Hide();
+            view_invoices_panel.Dock = DockStyle.Fill;
+
+            edit_invoice_panel.Hide();
+            edit_invoice_panel.Dock = DockStyle.Fill;
 
         }
 
@@ -180,10 +188,10 @@ namespace ThymeFrontEnd
 
         private async void btnSaveNewCustomer_Click(object sender, EventArgs e)
         {
-            string email_address =  txtCustomer_add_address.Text.ToString().ToLower();
-            string description   = txtCustomer_add_description.Text.ToString().ToLower();
-            string contact       = txtCustomer_add_contact.Text.ToString().ToLower();
-            string code          = txtCustomer_add_code.Text.ToString().ToLower();
+            string email_address = txtCustomer_add_address.Text.ToString().ToLower();
+            string description = txtCustomer_add_description.Text.ToString().ToLower();
+            string contact = txtCustomer_add_contact.Text.ToString().ToLower();
+            string code = txtCustomer_add_code.Text.ToString().ToLower();
 
             Customer customer = new Customer
             {
@@ -196,8 +204,8 @@ namespace ThymeFrontEnd
 
             if (isValidForm(customer))
             {
-               
-                 
+
+
                 string json = JsonConvert.SerializeObject(customer);
 
 
@@ -218,7 +226,7 @@ namespace ThymeFrontEnd
                         txtCustomer_add_address.Clear();
                         txtCustomer_add_code.Clear();
                         txtCustomer_add_contact.Clear();
-                        txtCustomer_add_description.Clear(); 
+                        txtCustomer_add_description.Clear();
                         loadCustomers();
 
                     }
@@ -226,7 +234,7 @@ namespace ThymeFrontEnd
                     {
                         string responseBody = await response.Content.ReadAsStringAsync();
                         MessageBox.Show($"Failed to add customer. Status code: {response.StatusCode}\n{responseBody}");
-                           addlogs($"Failed to add customer. Status code: {response.StatusCode}\n{responseBody}");
+                        addlogs($"Failed to add customer. Status code: {response.StatusCode}\n{responseBody}");
                     }
                 }
                 catch (Exception ex)
@@ -240,9 +248,9 @@ namespace ThymeFrontEnd
 
         private static bool isValidForm(Customer customer)
         {
-             bool isValid = true;
+            bool isValid = true;
 
-            if(customer.PartnerContact.Length < 10)
+            if (customer.PartnerContact.Length < 10)
             {
                 isValid = false;
                 MessageBox.Show("Provide valid contact with at least 10 digits");
@@ -254,18 +262,18 @@ namespace ThymeFrontEnd
                 MessageBox.Show("Provide valid Email ");
             }
 
-            if(customer.CustomerDescription.Length <=3)
+            if (customer.CustomerDescription.Length <= 3)
             {
                 isValid = false;
                 MessageBox.Show("Provide valid Description ");
             }
-            if(customer.PartnerCustomerCode.Length < 5)
+            if (customer.PartnerCustomerCode.Length < 5)
             {
                 MessageBox.Show("Provide valid Code with at least 5 digits ");
                 isValid = false;
             }
 
-            
+
 
             return isValid;
         }
@@ -302,7 +310,8 @@ namespace ThymeFrontEnd
             string code = txtEditCustomer_code.Text.ToString().ToLower();
 
 
-            MessageBox.Show($"EDIT SAVE ID : {editCustomerId} ");
+       
+
 
             Customer customer = new Customer
             {
@@ -365,39 +374,39 @@ namespace ThymeFrontEnd
         private async void deleteCustomer(int rowindex)
         {
 
-             
 
 
-                string json = JsonConvert.SerializeObject(editCustomerId); 
-                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-         
-             
+
+            string json = JsonConvert.SerializeObject(editCustomerId);
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+
             try
+            {
+                // Send the POST request
+                HttpResponseMessage response = await _httpClient.DeleteAsync($"Customer/deletecustomer/{editCustomerId}");
+
+                // Check the response status
+                if (response.IsSuccessStatusCode)
                 {
-                    // Send the POST request
-                    HttpResponseMessage response = await _httpClient.DeleteAsync($"Customer/deletecustomer/{editCustomerId}");
+                    MessageBox.Show("Customer Deleted successfully!");
+                    addlogs("Customer Deleted successfully!");
 
-                    // Check the response status
-                    if (response.IsSuccessStatusCode)
-                    {
-                        MessageBox.Show("Customer Deleted successfully!");
-                        addlogs("Customer Deleted successfully!");
-                     
-                        loadCustomers();
+                    loadCustomers();
 
-                    } 
-                    else
-                    {
-                        string responseBody = await response.Content.ReadAsStringAsync();
-                        MessageBox.Show($"Failed to delete customer. Status code: {response.StatusCode}\n{responseBody}");
-                        addlogs($"Failed to delete customer. Status code: {response.StatusCode}\n{responseBody}");
-                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show($"An error occurred: {ex.Message}");
-                    addlogs($"An error occurred: {ex.Message}");
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    MessageBox.Show($"Failed to delete customer. Status code: {response.StatusCode}\n{responseBody}");
+                    addlogs($"Failed to delete customer. Status code: {response.StatusCode}\n{responseBody}");
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+                addlogs($"An error occurred: {ex.Message}");
+            }
 
 
 
@@ -409,8 +418,8 @@ namespace ThymeFrontEnd
 
 
 
-          
-          
+
+
         }
 
         private void populateEditprofile(CustomerDisplay customerDisplay)
@@ -436,15 +445,15 @@ namespace ThymeFrontEnd
                 if (cellValue != null)
                 {
                     // Assuming CustomerID is stored in the first column (index 0)
-                     
+
                     CustomerDisplay customerDisplay = customerDisplaysList.ElementAt(e.RowIndex);
 
                     var customerID = CustomersIdsLisbox.Items[e.RowIndex].ToString();
                     string descriptionOCusmtomer = CustomersdataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
                     editCustomerId = System.Convert.ToInt16(customerID);
-                    customerDisplay.CustomerID = editCustomerId; 
+                    customerDisplay.CustomerID = editCustomerId;
 
-                    MessageBox.Show($"EDIT Cliekd ID : {editCustomerId} ");
+                   
 
 
                     switch (e.ColumnIndex)
@@ -452,7 +461,7 @@ namespace ThymeFrontEnd
                         case 6:
                             ArrangePanels();
                             EditCustomerPanel.Show();
-                           
+
                             populateEditprofile(customerDisplay);
 
                             break;
@@ -461,7 +470,7 @@ namespace ThymeFrontEnd
 
                             var selection = MessageBox.Show($"Are you sure you want to delete this customer : {descriptionOCusmtomer} ", "Confirm deletion", MessageBoxButtons.YesNoCancel);
 
-                            if(selection == DialogResult.Yes)
+                            if (selection == DialogResult.Yes)
                             {
                                 deleteCustomer(e.RowIndex);
 
@@ -472,7 +481,8 @@ namespace ThymeFrontEnd
 
                         case 8:
 
-                            MessageBox.Show("View Invoices Panel here");
+                            ArrangePanels();
+                            view_invoices_panel.Show();
                             break;
 
                         default:
@@ -480,11 +490,189 @@ namespace ThymeFrontEnd
 
 
                     }
-                       //6- EditCustomerPanel 
+                    //6- EditCustomerPanel 
                     //    7-DeleteChildAccessRule 
                     //    8- View invoices 
                 }
             }
+        }
+
+        private void btnCancel_add_invoice_Click(object sender, EventArgs e)
+        {
+            ArrangePanels();
+            HomePanel.Show();
+        }
+
+
+        public bool isValidInvoice(InvoiceDTO invoiceDTO)
+        {
+            bool isValid = true;
+            if (invoiceDTO == null)
+            {
+                MessageBox.Show("Invoice data cannot be null.");
+                isValid = false;
+            }
+
+            if (invoiceDTO.InvoiceHeader == null)
+            {
+                MessageBox.Show("Invoice header is required.");
+                isValid = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(invoiceDTO.InvoiceHeader.CustomerName))
+            {
+                MessageBox.Show("Customer name is required in the invoice header.");
+                isValid = false;
+            }
+            if (string.IsNullOrWhiteSpace(invoiceDTO.InvoiceHeader.CustomerAddress))
+            {
+                MessageBox.Show("Customer address is required in the invoice header.");
+                isValid = false;
+            }
+            if (string.IsNullOrWhiteSpace(invoiceDTO.InvoiceHeader.CustomerTelephone) || invoiceDTO.InvoiceHeader.CustomerTelephone.Length > 15)
+            {
+                MessageBox.Show("Customer telephone is required and must not exceed 15 characters.");
+                isValid = false;
+            }
+            // Validate InvoiceDetail
+            if (invoiceDTO.invoiceDetail == null)
+            {
+                MessageBox.Show("Invoice detail is required.");
+                isValid = false;
+            }
+            if (string.IsNullOrWhiteSpace(invoiceDTO.invoiceDetail.ItemDescription))
+            {
+                MessageBox.Show("Item description in the invoice detail is required.");
+                isValid = false;
+            }
+            if (invoiceDTO.invoiceDetail.Quantity <= 0)
+            {
+                MessageBox.Show("Quantity must be greater than 0.");
+                isValid = false;
+            }
+            if (invoiceDTO.invoiceDetail.UnitPrice <= 0)
+            {
+                MessageBox.Show("Unit price must be greater than 0.");
+                isValid = false;
+            }
+
+            if (invoiceDTO.invoice == null)
+            {
+                MessageBox.Show("Invoice information is required.");
+                isValid = false;
+            }
+            if (string.IsNullOrWhiteSpace(invoiceDTO.invoice.CustomerName))
+            {
+                MessageBox.Show("Customer name in the invoice is required.");
+                isValid = false;
+            }
+            if (!IsValidEmail(invoiceDTO.invoice.CustomerName))
+            {
+                MessageBox.Show("A valid email address is required in the invoice.");
+                isValid = false;
+            }
+            if (string.IsNullOrWhiteSpace(invoiceDTO.invoice.CustomerAddress))
+            {
+                MessageBox.Show("Customer address in the invoice is required.");
+                isValid = false;
+            }
+
+            return isValid;
+        }
+        private async void btnSaveInvoice_Click(object sender, EventArgs e)
+        {
+            Invoice invoice = new Invoice
+            {
+
+            };
+            InvoiceDetail detail = new InvoiceDetail
+            {
+
+            };
+            InvoiceHeader invoiceHeader = new InvoiceHeader
+            {
+
+            };
+
+            InvoiceDTO invoiceDTO = new InvoiceDTO
+            {
+                invoice = invoice,
+                InvoiceHeader = invoiceHeader,
+                invoiceDetail = detail
+            };
+
+
+            if (isValidInvoice(invoiceDTO))
+            {
+
+
+                string json = JsonConvert.SerializeObject(invoiceDTO);
+
+
+                // Create the HTTP content with JSON data
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                try
+                {
+                    // Send the POST request
+                    HttpResponseMessage response = await _httpClient.PostAsync("Invoices/addcustomerinvoice", content);
+
+                    // Check the response status
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Customer Invoice added successfully!");
+                        addlogs("Customer Invoice added successfully!");
+
+                        txtCustomer_add_address.Clear();
+                        txtCustomer_add_code.Clear();
+                        txtCustomer_add_contact.Clear();
+                        txtCustomer_add_description.Clear();
+                        loadCustomers();
+
+                    }
+                    else
+                    {
+                        string responseBody = await response.Content.ReadAsStringAsync();
+                        MessageBox.Show($"Failed to add customer. Status code: {response.StatusCode}\n{responseBody}");
+                        addlogs($"Failed to add customer. Status code: {response.StatusCode}\n{responseBody}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred: {ex.Message}");
+                    addlogs($"An error occurred: {ex.Message}");
+                }
+
+            }
+        }
+
+        private void addInvoiceBtn_Click(object sender, EventArgs e)
+        {
+            ArrangePanels();
+            add_invoice_panel.Show();
+        }
+
+        private void btn_add_invocie_Click(object sender, EventArgs e)
+        {
+            ArrangePanels();
+            add_invoice_panel.Show();
+        }
+
+        private void btn_go_back_Click(object sender, EventArgs e)
+        {
+            ArrangePanels();
+            HomePanel.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ArrangePanels();
+            HomePanel.Show();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            //Save Edit incoive information
         }
     }
 }

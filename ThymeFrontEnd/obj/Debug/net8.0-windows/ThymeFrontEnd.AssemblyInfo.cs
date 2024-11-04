@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ThymeFrontEnd")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0500ae2929e1c8bb5f34abeb5b6f39a8766ea91d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e83048b55092044dc3ea2d75753e86715e70fdf4")]
 [assembly: System.Reflection.AssemblyProductAttribute("ThymeFrontEnd")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ThymeFrontEnd")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
