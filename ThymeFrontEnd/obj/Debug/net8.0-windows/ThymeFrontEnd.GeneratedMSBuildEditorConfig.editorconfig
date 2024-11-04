@@ -14,6 +14,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ThymeFrontEnd
-build_property.ProjectDir = C:\Users\mukundir\source\repos\ThymeAssessment\ThymeFrontEnd\
+build_property.ProjectDir = C:\Users\mukundir\source\repos\thyme_assesssment\ThymeFrontEnd\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

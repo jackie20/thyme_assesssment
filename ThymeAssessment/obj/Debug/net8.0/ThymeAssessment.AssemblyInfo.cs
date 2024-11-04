@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ThymeAssessment")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0500ae2929e1c8bb5f34abeb5b6f39a8766ea91d")]
 [assembly: System.Reflection.AssemblyProductAttribute("ThymeAssessment")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ThymeAssessment")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
