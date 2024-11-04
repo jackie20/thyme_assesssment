@@ -1,0 +1,90 @@
+loadCustomers
+
+ Monday, 04 November 2024 :  loadCustomer
+
+ Monday, 04 November 2024 :  An error occurred: Unable to cast object of type 'Newtonsoft.Json.Linq.JObject' to type 'ThymeFrontEnd.Models.Customer'.
+
+ Monday, 04 November 2024 :  loadCustomers
+
+ Monday, 04 November 2024 :  loadCustomer
+
+ Monday, 04 November 2024 :  An error occurred: Unable to cast object of type 'Newtonsoft.Json.Linq.JObject' to type 'ThymeFrontEnd.Models.Customer'.
+
+ Monday, 04 November 2024 :  loadCustomers
+
+ Monday, 04 November 2024 :  loadCustomer
+
+ Monday, 04 November 2024 :  An error occurred: Unexpected character encountered while parsing value: S. Path '', line 0, position 0.
+
+ Monday, 04 November 2024 :  loadCustomers
+
+ Monday, 04 November 2024 :  loadCustomer
+
+ Monday, 04 November 2024 :  An error occurred: Unexpected character encountered while parsing value: S. Path '', line 0, position 0.
+
+ Monday, 04 November 2024 :  loadCustomers
+
+ Monday, 04 November 2024 :  loadCustomer
+
+ Monday, 04 November 2024 :  loadCustomers
+
+ Monday, 04 November 2024 :  loadCustomers
+
+ Monday, 04 November 2024 :  loadCustomer
+
+ Monday, 04 November 2024 :  loadCustomers
+
+ Monday, 04 November 2024 :  loadCustomer
+
+ Monday, 04 November 2024 :  loadCustomers
+
+ Monday, 04 November 2024 :  loadCustomer
+
+ Monday, 04 November 2024 :  loadCustomers
+
+ Monday, 04 November 2024 :  loadCustomer
+
+ Monday, 04 November 2024 :  loadCustomers
+
+ Monday, 04 November 2024 :  loadCustomer
+
+ Monday, 04 November 2024 :  loadCustomers
+
+ Monday, 04 November 2024 :  loadCustomer
+
+ Monday, 04 November 2024 :  Error retrieving customers: Method Not Allowed
+
+ Monday, 04 November 2024 :  loadCustomers
+
+ Monday, 04 November 2024 :  loadCustomer
+
+ Monday, 04 November 2024 :  Failed to add customer. Status code: BadRequest
+{"success":false,"message":"Error adding customer: Partner customer code is required and must be a maximum of 6 characters.","data":null}
+
+ Monday, 04 November 2024 :  Failed to add customer. Status code: BadRequest
+{"success":false,"message":"Error adding customer: Partner customer code is required and must be a maximum of 6 characters.","data":null}
+
+ Monday, 04 November 2024 :  Customer added successfully!
+
+ Monday, 04 November 2024 :  loadCustomers
+
+ Monday, 04 November 2024 :  loadCustomer
+
+ Monday, 04 November 2024 :  Customer Deleted successfully!
+
+ Monday, 04 November 2024 :  loadCustomers
+
+ Monday, 04 November 2024 :  Failed to update customer. Status code: NotFound
+{"success":false,"message":"Error updating customer: Invalid customer ID.","data":null}
+
+ Monday, 04 November 2024 :  loadCustomers
+
+ Monday, 04 November 2024 :  loadCustomer
+
+ Monday, 04 November 2024 :  loadCustomers
+
+ Monday, 04 November 2024 :  loadCustomer
+
+ Monday, 04 November 2024 :  Customer updated successfully!
+
+ Monday, 04 November 2024 :  loadCustomers

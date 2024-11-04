@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThymeAssessment", "ThymeAssessment\ThymeAssessment.csproj", "{4EA39427-B8BE-448D-9D6B-84B677E88EF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThymeFrontEnd", "ThymeFrontEnd\ThymeFrontEnd.csproj", "{2E74CB28-18C8-42EB-85B7-7AE8FABEEFEF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4EA39427-B8BE-448D-9D6B-84B677E88EF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EA39427-B8BE-448D-9D6B-84B677E88EF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EA39427-B8BE-448D-9D6B-84B677E88EF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EA39427-B8BE-448D-9D6B-84B677E88EF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E74CB28-18C8-42EB-85B7-7AE8FABEEFEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E74CB28-18C8-42EB-85B7-7AE8FABEEFEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E74CB28-18C8-42EB-85B7-7AE8FABEEFEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E74CB28-18C8-42EB-85B7-7AE8FABEEFEF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3725ACF9-0E93-4BEB-B873-F20E4475D64A}
+	EndGlobalSection
+EndGlobal
