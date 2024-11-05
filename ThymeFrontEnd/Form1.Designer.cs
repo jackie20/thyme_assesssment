@@ -73,8 +73,7 @@
             add_invoice_panel = new Panel();
             btnCancel_add_invoice = new Button();
             btnSaveInvoice = new Button();
-            label15 = new Label();
-            label20 = new Label();
+            add_invoice_error_label = new Label();
             panel8 = new Panel();
             txt_add_invoice_quantity = new NumericUpDown();
             txt_add_invoice_line_total = new TextBox();
@@ -572,15 +571,14 @@
             // 
             add_invoice_panel.Controls.Add(btnCancel_add_invoice);
             add_invoice_panel.Controls.Add(btnSaveInvoice);
-            add_invoice_panel.Controls.Add(label15);
-            add_invoice_panel.Controls.Add(label20);
+            add_invoice_panel.Controls.Add(add_invoice_error_label);
             add_invoice_panel.Controls.Add(panel8);
             add_invoice_panel.Controls.Add(panel6);
             add_invoice_panel.Controls.Add(label21);
             add_invoice_panel.Controls.Add(label14);
-            add_invoice_panel.Location = new Point(748, 104);
+            add_invoice_panel.Location = new Point(739, 167);
             add_invoice_panel.Name = "add_invoice_panel";
-            add_invoice_panel.Size = new Size(217, 176);
+            add_invoice_panel.Size = new Size(243, 185);
             add_invoice_panel.TabIndex = 3;
             // 
             // btnCancel_add_invoice
@@ -609,29 +607,16 @@
             btnSaveInvoice.UseVisualStyleBackColor = false;
             btnSaveInvoice.Click += btnSaveInvoice_Click;
             // 
-            // label15
+            // add_invoice_error_label
             // 
-            label15.AutoSize = true;
-            label15.BorderStyle = BorderStyle.FixedSingle;
-            label15.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label15.ForeColor = Color.FromArgb(192, 0, 0);
-            label15.Location = new Point(65, 413);
-            label15.Name = "label15";
-            label15.Size = new Size(64, 20);
-            label15.TabIndex = 1;
-            label15.Text = "label20";
-            // 
-            // label20
-            // 
-            label20.AutoSize = true;
-            label20.BorderStyle = BorderStyle.FixedSingle;
-            label20.Font = new Font("Century Gothic", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label20.ForeColor = Color.FromArgb(192, 0, 0);
-            label20.Location = new Point(65, 212);
-            label20.Name = "label20";
-            label20.Size = new Size(64, 20);
-            label20.TabIndex = 1;
-            label20.Text = "label20";
+            add_invoice_error_label.AutoSize = true;
+            add_invoice_error_label.BorderStyle = BorderStyle.FixedSingle;
+            add_invoice_error_label.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            add_invoice_error_label.ForeColor = Color.FromArgb(192, 0, 0);
+            add_invoice_error_label.Location = new Point(65, 413);
+            add_invoice_error_label.Name = "add_invoice_error_label";
+            add_invoice_error_label.Size = new Size(2, 22);
+            add_invoice_error_label.TabIndex = 1;
             // 
             // panel8
             // 
@@ -745,6 +730,7 @@
             // 
             // txt_add_invoice_CustomerCombo
             // 
+            txt_add_invoice_CustomerCombo.DropDownStyle = ComboBoxStyle.DropDownList;
             txt_add_invoice_CustomerCombo.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txt_add_invoice_CustomerCombo.FormattingEnabled = true;
             txt_add_invoice_CustomerCombo.Location = new Point(479, 105);
@@ -1011,10 +997,9 @@
             edit_invoice_panel.Controls.Add(panel15);
             edit_invoice_panel.Controls.Add(label33);
             edit_invoice_panel.Controls.Add(label34);
-            edit_invoice_panel.Dock = DockStyle.Fill;
-            edit_invoice_panel.Location = new Point(0, 0);
+            edit_invoice_panel.Location = new Point(349, 134);
             edit_invoice_panel.Name = "edit_invoice_panel";
-            edit_invoice_panel.Size = new Size(1046, 705);
+            edit_invoice_panel.Size = new Size(273, 71);
             edit_invoice_panel.TabIndex = 5;
             // 
             // button1
@@ -1400,7 +1385,7 @@
         private Label label21;
         private Button btnCancel_add_invoice;
         private Button btnSaveInvoice;
-        private Label label15;
+        private Label add_invoice_error_label;
         private Panel view_invoices_panel;
         private DataGridView InvoicesdataGridView;
         private Panel panel12;

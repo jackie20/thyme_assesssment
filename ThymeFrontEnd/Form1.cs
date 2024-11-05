@@ -507,73 +507,81 @@ namespace ThymeFrontEnd
         public bool isValidInvoice(InvoiceDTO invoiceDTO)
         {
             bool isValid = true;
+            add_invoice_error_label.Text = "";
             if (invoiceDTO == null)
             {
-                MessageBox.Show("Invoice data cannot be null.");
+            
+                add_invoice_error_label.Text = "Invoice data cannot be null.";
                 isValid = false;
             }
 
             if (invoiceDTO.InvoiceHeader == null)
             {
-                MessageBox.Show("Invoice header is required.");
+                add_invoice_error_label.Text = "Invoice header is required."; 
                 isValid = false;
             }
 
             if (string.IsNullOrWhiteSpace(invoiceDTO.InvoiceHeader.CustomerName))
             {
-                MessageBox.Show("Customer name is required in the invoice header.");
+             
+                add_invoice_error_label.Text = "Customer name is required in the invoice header.";
                 isValid = false;
             }
             if (string.IsNullOrWhiteSpace(invoiceDTO.InvoiceHeader.CustomerAddress))
             {
-                MessageBox.Show("Customer address is required in the invoice header.");
+                
+                add_invoice_error_label.Text = "Customer address is required in the invoice header";
                 isValid = false;
             }
             if (string.IsNullOrWhiteSpace(invoiceDTO.InvoiceHeader.CustomerTelephone) || invoiceDTO.InvoiceHeader.CustomerTelephone.Length > 15)
             {
-                MessageBox.Show("Customer telephone is required and must not exceed 15 characters.");
+              
+                add_invoice_error_label.Text = "Customer telephone is required and must not exceed 15 characters";
                 isValid = false;
             }
             // Validate InvoiceDetail
             if (invoiceDTO.invoiceDetail == null)
             {
-                MessageBox.Show("Invoice detail is required.");
+                
+                add_invoice_error_label.Text = "Invoice detail is required";
                 isValid = false;
             }
             if (string.IsNullOrWhiteSpace(invoiceDTO.invoiceDetail.ItemDescription))
             {
-                MessageBox.Show("Item description in the invoice detail is required.");
+             
+                add_invoice_error_label.Text = "Item description in the invoice detail is required";
                 isValid = false;
             }
             if (invoiceDTO.invoiceDetail.Quantity <= 0)
             {
                 MessageBox.Show("Quantity must be greater than 0.");
+                add_invoice_error_label.Text = "";
                 isValid = false;
             }
             if (invoiceDTO.invoiceDetail.UnitPrice <= 0)
             {
                 MessageBox.Show("Unit price must be greater than 0.");
+                add_invoice_error_label.Text = "";
                 isValid = false;
             }
 
             if (invoiceDTO.invoice == null)
             {
-                MessageBox.Show("Invoice information is required.");
+             
+                add_invoice_error_label.Text = "Invoice information is required.";
                 isValid = false;
             }
             if (string.IsNullOrWhiteSpace(invoiceDTO.invoice.CustomerName))
             {
-                MessageBox.Show("Customer name in the invoice is required.");
+                
+                add_invoice_error_label.Text = "Customer name in the invoice is required.";
                 isValid = false;
             }
-            if (!IsValidEmail(invoiceDTO.invoice.CustomerName))
-            {
-                MessageBox.Show("A valid email address is required in the invoice.");
-                isValid = false;
-            }
+           
             if (string.IsNullOrWhiteSpace(invoiceDTO.invoice.CustomerAddress))
             {
-                MessageBox.Show("Customer address in the invoice is required.");
+
+                add_invoice_error_label.Text = "Customer address in the invoice is required.";
                 isValid = false;
             }
 
@@ -581,17 +589,48 @@ namespace ThymeFrontEnd
         }
         private async void btnSaveInvoice_Click(object sender, EventArgs e)
         {
-            Invoice invoice = new Invoice
-            {
+            add_invoice_error_label.Text = "";
+            if (txt_add_invoice_CustomerCombo.SelectedIndex != -1) { 
 
+            string address = txt_add_invoice_address.Text.ToString().ToLower();
+            int customerId = int.TryParse(CustomersIdsLisbox.Items[txt_add_invoice_CustomerCombo.SelectedIndex].ToString(), out int tempResultId) ? tempResultId : 0;  
+            string description = txt_add_invoice_item_description.Text.ToString().ToLower();
+            string names = txt_add_invoice_names.Text.ToString().ToLower();
+            int quantity = int.TryParse(txt_add_invoice_quantity.Text.ToString().ToLower(), out int tempResultint) ? tempResultint : 0;  
+            string telephone = txt_add_invoice_telephone.Text.ToString().ToLower();
+             decimal unitprice = decimal.TryParse(txt_add_invoice_unit_price.Text.ToString().ToLower(), out decimal tempResultprice) ? tempResultprice : 0m;
+            decimal total = quantity * unitprice;
+            txt_add_invoice_line_total.Text = total.ToString();
+
+                    // decimal result = decimal.TryParse(input, out decimal tempResult) ? tempResult : 0m;
+                    //int result = int.TryParse(input, out int tempResult) ? tempResult : 0;
+
+                    Invoice invoice = new Invoice
+            {
+                InvoiceDate = DateTime.UtcNow,
+                InvoiceNumber = 0,
+                CustomerAddress = address,
+                CustomerName = names,
+                CustomerTelephoneNumber = telephone,
             };
             InvoiceDetail detail = new InvoiceDetail
-            {
-
+            { 
+                ItemDescription = description,
+                LineTotal = total, 
+                Quantity = quantity, 
+                UnitPrice = unitprice,
+                DetailID = 0 ,
+               
             };
             InvoiceHeader invoiceHeader = new InvoiceHeader
             {
-
+                InvoiceDate = invoice.InvoiceDate,
+                CustomerAddress = address,
+                CustomerID = customerId , 
+                InvoiceID = 0,
+                InvoiceNumber = "0",
+                CustomerName= names,
+                CustomerTelephone = telephone
             };
 
             InvoiceDTO invoiceDTO = new InvoiceDTO
@@ -602,47 +641,48 @@ namespace ThymeFrontEnd
             };
 
 
-            if (isValidInvoice(invoiceDTO))
-            {
-
-
-                string json = JsonConvert.SerializeObject(invoiceDTO);
-
-
-                // Create the HTTP content with JSON data
-                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                try
+                if (isValidInvoice(invoiceDTO))
                 {
-                    // Send the POST request
-                    HttpResponseMessage response = await _httpClient.PostAsync("Invoices/addcustomerinvoice", content);
 
-                    // Check the response status
-                    if (response.IsSuccessStatusCode)
+
+                    string json = JsonConvert.SerializeObject(invoiceDTO);
+
+
+                    // Create the HTTP content with JSON data
+                    StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                    try
                     {
-                        MessageBox.Show("Customer Invoice added successfully!");
-                        addlogs("Customer Invoice added successfully!");
+                        // Send the POST request
+                        HttpResponseMessage response = await _httpClient.PostAsync("Invoices/addcustomerinvoice", content);
 
-                        txtCustomer_add_address.Clear();
-                        txtCustomer_add_code.Clear();
-                        txtCustomer_add_contact.Clear();
-                        txtCustomer_add_description.Clear();
-                        loadCustomers();
+                        // Check the response status
+                        if (response.IsSuccessStatusCode)
+                        {
+                            MessageBox.Show("Customer Invoice added successfully!");
+                            addlogs("Customer Invoice added successfully!");
+                             
+                            loadCustomers();
 
+                        }
+                        else
+                        {
+                            string responseBody = await response.Content.ReadAsStringAsync();
+                            MessageBox.Show($"Failed to add customer. Status code: {response.StatusCode}\n{responseBody}");
+                            addlogs($"Failed to add customer. Status code: {response.StatusCode}\n{responseBody}");
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        string responseBody = await response.Content.ReadAsStringAsync();
-                        MessageBox.Show($"Failed to add customer. Status code: {response.StatusCode}\n{responseBody}");
-                        addlogs($"Failed to add customer. Status code: {response.StatusCode}\n{responseBody}");
+                        MessageBox.Show($"An error occurred: {ex.Message}");
+                        addlogs($"An error occurred: {ex.Message}");
                     }
-                }
-                catch (Exception ex)
+
+                }else
                 {
-                    MessageBox.Show($"An error occurred: {ex.Message}");
-                    addlogs($"An error occurred: {ex.Message}");
+                    add_invoice_error_label.Text = "Customer is required ";
+                    MessageBox.Show($"Selecte Customer ");
                 }
-
             }
         }
 
